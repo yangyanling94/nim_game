@@ -1,6 +1,6 @@
-## nim_game
+# nim_game
 
-### Game Rules
+## Game Rules
 * Randomly create a number of heaps where the number must either be 3, 5 or 7
 * For each heap created, randomly assign the initial number of objects within the heap. The number can be either 9, 11 or 13
 * Randomly assign the first player, either the human or the computer.
