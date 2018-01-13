@@ -21,6 +21,7 @@ public class NimGame {
 	private static int[] heap; 
 	private static int player = 0; // 0 -> computer, 1 -> human
 	private static Random generate = new Random();
+	private static Scanner keyboard = new Scanner(System.in);
 	
 	static {
 		heap = createHeaps();
@@ -57,7 +58,16 @@ public class NimGame {
 
 	private static void selectFirstPlayer() {
 		player = generate.nextInt(2);
-		System.out.println("Player " + player + " goes first");
+		String name = getPlayerName(player);
+		System.out.println("Player " + name + " goes first");
+	}
+
+	private static String getPlayerName(int player2) {
+		String name = "computer";
+		if (player == 1) {
+			name = "human";
+		}
+		return name;
 	}
 
 	private static void playGame() {
@@ -106,7 +116,8 @@ public class NimGame {
 		int objectsNumRemoved = move[0];
 		heap[heapNum] -= objectsNumRemoved;
 		heapNum += 1;
-		System.out.println("Player " + player + " took " +  objectsNumRemoved + " from heap " + heapNum);
+		String name = getPlayerName(player);
+		System.out.println("Player " + name + " took " +  objectsNumRemoved + " from heap " + heapNum);
 		for (int remainedEach : heap) {
 			System.out.print(remainedEach + " ");
 		}
@@ -123,7 +134,7 @@ public class NimGame {
 	}
 
 	private static int[] generateHumanMove() {
-		Scanner keyboard = new Scanner(System.in);
+		// Scanner keyboard = new Scanner(System.in);
 		int[] move = new int[2];
 		
 		String input = keyboard.nextLine();
@@ -159,11 +170,7 @@ public class NimGame {
 		} else {
 			System.out.println("Player computer has won");
 		}
+		keyboard.close();
 	}
-
-	
-
-	
-	
 
 }
